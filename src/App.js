@@ -11,11 +11,9 @@ function App() {
   const search = (e) => {
     e.preventDefault();
     const url = `${process.env.REACT_APP_API_URL}weather?q=${query}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
-    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setWeather(data);
       });
     document.getElementById("search-box").value = "";
