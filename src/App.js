@@ -18,6 +18,7 @@ function App() {
         console.log(data);
         setWeather(data);
       });
+    document.getElementById("search-box").value = "";
   };
   const img = weather && weather.weather ? weather.weather[0].main : "";
   return (
@@ -29,6 +30,7 @@ function App() {
           type="text"
           onChange={(e) => setQuery(e.target.value)}
           placeholder="location"
+          id="search-box"
         />
       </form>
 
