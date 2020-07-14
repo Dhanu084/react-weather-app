@@ -8,13 +8,16 @@ console.log(process.env.REACT_APP_API_URL);
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState("");
+  const [loading, setLoading] = useState(false);
   const search = (e) => {
     e.preventDefault();
     const url = `${process.env.REACT_APP_API_URL}weather?q=${query}&units=metric&APPID=${process.env.REACT_APP_API_KEY}`;
+    setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setWeather(data);
+        setLoading(false);
       });
     document.getElementById("search-box").value = "";
   };
@@ -31,8 +34,8 @@ function App() {
           id="search-box"
         />
       </form>
-
-      {weather && weather.cod !== "404" && (
+      {loading && <div className="weather-info">loading</div>}
+      {weather && weather.cod !== "404" && !loading && (
         <div className="weather-info">
           <div className="location">
             {weather.name}
