@@ -117,4 +117,8 @@ code {
   .degree {
     font-size: 3rem;
   }
+  .not-found {
+    left: 5%;
+    overflow: hidden;
+  }
 }
